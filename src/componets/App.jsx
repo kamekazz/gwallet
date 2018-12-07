@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route,Switch} from 'react-router-dom'
+import { Router, Route,Switch} from 'react-router-dom'
 import StreamList from './streams/StreamList';
 import StreamCreate from './streams/StreamCreate';
 import StreamEdit from './streams/StreamEdit';
 import StreamDelete from './streams/StreamDelete';
 import StreamShow from './streams/StreamShow';
 import Header from './laout/Header';
+import history from '../history';
+
+
 
  class App extends Component {
 
@@ -13,11 +16,10 @@ import Header from './laout/Header';
 
     return (
 
-      <div>
-          <BrowserRouter>
+      <div className="ui container">
+          <Router history={history}>
           <div>
             <Header />
-             <div style={{padding:'20px'}}>
               <Switch >
                 <Route path="/" exact  component={StreamList} />
                 <Route path="/streams/new" exact  component={StreamCreate} />
@@ -25,10 +27,8 @@ import Header from './laout/Header';
                 <Route path="/streams/delete"   component={StreamDelete} />
                 <Route path="/streams/show"   component={StreamShow} />
               </Switch>
-             </div>
-
           </div>
-          </BrowserRouter>
+          </Router>
       </div>
 
     )

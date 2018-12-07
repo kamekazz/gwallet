@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ferchStreams } from '../../store/actions'
+import { Link } from 'react-router-dom'
 
 
 
@@ -9,6 +10,36 @@ import { ferchStreams } from '../../store/actions'
   componentDidMount(){
     this.props.ferchStreams()
   }
+
+
+  renderAdmin=(st)=>{
+    if (st.userId === this.props.currentUserId) {
+      return(
+        <div>
+          <button className="ui button primary">
+            edit
+          </button>
+          <button className="ui button negative">
+            delete
+          </button>
+        </div>
+      )
+    }
+  }
+
+  rdCreate=()=>{
+    if (this.props.isSignedIn) {
+        return(
+          <div style={{textAlign:'right'}}>
+            <Link to="/streams/new" className="ui button primary">
+              Create Stream
+            </Link>
+          </div>
+        )
+    }
+  }
+
+
 
   renderList=()=>{
     return this.props.streams.map(stream =>(
@@ -20,6 +51,7 @@ import { ferchStreams } from '../../store/actions'
             {stream.description}
           </div>
         </div>
+        {this.renderAdmin(stream)}
       </div>
     )
 
@@ -28,15 +60,22 @@ import { ferchStreams } from '../../store/actions'
 
   render() {
     return (
-      <div className="ui celled list">
-        {this.renderList()}
+      <div>
+        <h2>Streams</h2>
+        <div className="ui celled list">
+          {this.renderList()}
+        </div>
+        {this.rdCreate()}
       </div>
+      
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  streams: Object.values(state.streams)   
+  streams: Object.values(state.streams),
+  currentUserId: state.auth.userId,
+  isSignedIn: state.auth.isSignedIn
 })
 
 const mapDispatchToProps = {
