@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import  { signIn, signOut } from '../store/actions'
 import { connect } from 'react-redux'
-import  apiKiys  from '../confinkiys'
+import  apiKiys  from '../conf/confinkiys'
 
 
 
