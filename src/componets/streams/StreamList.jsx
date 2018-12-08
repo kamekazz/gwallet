@@ -16,9 +16,7 @@ import { Link } from 'react-router-dom'
     if (st.userId === this.props.currentUserId) {
       return(
         <div>
-          <button className="ui button primary">
-            edit
-          </button>
+          <Link className="ui button primary" to={`/streams/edit/${st.id}`}>EDIT</Link>
           <button className="ui button negative">
             delete
           </button>

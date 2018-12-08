@@ -23,7 +23,7 @@ import history from '../history';
               <Switch >
                 <Route path="/" exact  component={StreamList} />
                 <Route path="/streams/new" exact  component={StreamCreate} />
-                <Route path="/streams/edit" exact  component={StreamEdit} />
+                <Route path="/streams/edit/:id" exact  component={StreamEdit} />
                 <Route path="/streams/delete"   component={StreamDelete} />
                 <Route path="/streams/show"   component={StreamShow} />
               </Switch>
