@@ -1,17 +1,25 @@
 import React, { Component } from 'react'
 import Modal from '../laout/Modal'
 import history from '../../history'
+import { connect } from 'react-redux'
+import { ferchStream,deleteStream } from '../../store/actions'
 
-export default class StreamDelete extends Component {
+
+ class StreamDelete extends Component {
+
+  componentDidMount(){
+    this.props.ferchStream(this.props.match.params.id)
+  }
+
   render() {
+
     const actons =(
       <div  className="actions">
-        <button  className="ui button negative">Delete</button>
+        <button  onClick={()=> this.props.deleteStream(this.props.match.params.id)}
+         className="ui button negative">Delete</button>
         <button onClick={()=> history.push('/')} className="ui  button">Cancel</button>
       </div>
     )
-
-
 
     return (
       <div>
@@ -25,5 +33,20 @@ export default class StreamDelete extends Component {
         
       </div>
     )
+
   }
+
 }
+
+
+
+const mapStateToProps = (state) => ({
+  
+})
+
+const mapDispatchToProps = {
+  ferchStream,deleteStream
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(StreamDelete)

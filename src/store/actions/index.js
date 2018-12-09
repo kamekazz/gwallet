@@ -71,6 +71,7 @@ export const signIn = userId => {
     try {
       await  streams.delete(`/streams/${id}`)
       dispatch({type: DELETE_STREAM, payload: id})
+      history.push('/')
     } catch (error) {
       console.log(error);
     }

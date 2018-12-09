@@ -17,9 +17,9 @@ import { Link } from 'react-router-dom'
       return(
         <div>
           <Link className="ui button primary" to={`/streams/edit/${st.id}`}>EDIT</Link>
-          <button className="ui button negative">
+          <Link  to={`/streams/delete/${st.id}`}  className="ui button negative">
             delete
-          </button>
+          </Link>
         </div>
       )
     }
