@@ -41,9 +41,13 @@ html, body {
 }
 
 @keyframes backdrop{
-    0% {clip-path: circle(0% at 50% 0);}
+
+    /* 0% {clip-path: circle(0% at 50% 0);} */
+    0%  {clip-path: circle(120% at 50% 0);}
+
     65%  {clip-path: circle(61% at 50% 0);}
     100%  {clip-path: circle(120% at 50% 0);}
+
 }
 
 @keyframes text-opacity{
@@ -57,6 +61,12 @@ html, body {
     animation-duration: 10s;
     animation-direction: normal; 
 }
+
+#Get-Started-button{
+  position: relative;
+  top:3px;
+}
+
 
 /* <div id="Mian" >
 <Typography style={{color:"white",textAlign:'center',marginTop:'25px'}} component="h2" variant="h3" gutterBottom>

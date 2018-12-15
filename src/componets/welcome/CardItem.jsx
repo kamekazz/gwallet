@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
- class Email extends Component {
-
+class CardItem extends Component {
+  static propTypes = {
+    prop: PropTypes
+  }
 
   render() {
     return (
       <div>
-        Email
+        CardItem
       </div>
     )
   }
@@ -21,4 +24,4 @@ const mapDispatchToProps = {
   
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Email)
+export default connect(mapStateToProps, mapDispatchToProps)(CardItem)

@@ -3,6 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux'
 
 import Typography from '@material-ui/core/Typography';
+import EmailComponent from './EmailComponent';
+import  CardList  from './CardList';
 
 export class Mian extends Component {
 
@@ -20,7 +22,10 @@ export class Mian extends Component {
                 </Typography>
             </Grid>
             <Grid item xs={12} >
-            
+                <EmailComponent />
+            </Grid>
+            <Grid container direction="column" justify="center" alignItems="center" >
+                <CardList />
             </Grid>
         </Grid>
         </div>
