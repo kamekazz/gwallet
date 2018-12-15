@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
-import  { signIn, signOut } from '../../store/actions'
 import { connect } from 'react-redux'
 import  apiKiys  from '../../conf/confinkiys'
 
 import LockIcon from '@material-ui/icons/Lock';
-
 import Button from '@material-ui/core/Button';
-
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
+
+import * as actions from '../../store/actions'
 
 
  class GoogleAuth extends Component {
@@ -38,7 +36,6 @@ import Grid from '@material-ui/core/Grid';
             })
             .then(() => {
               this.auth = window.gapi.auth2.getAuthInstance()
-    
               this.onAuthChange(this.auth.isSignedIn.get())
               this.auth.isSignedIn.listen(this.onAuthChange)
             });
@@ -60,6 +57,7 @@ import Grid from '@material-ui/core/Grid';
       onSignOutClick = () => {
         this.auth.signOut()
         this.handleClose()
+        this.props.newMassages(' User Logout',true)
       }
 
       rdUserInfo = ()=>{
@@ -120,9 +118,7 @@ const mapStateToProps = (state) => ({
     userInfo: state.auth.userInfo
 })
 
-const mapDispatchToProps = {
-    signIn, signOut
-}
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(GoogleAuth)
+
+export default connect(mapStateToProps,actions)(GoogleAuth)

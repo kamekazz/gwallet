@@ -11,6 +11,7 @@ import TemporaryDrawer from './laout/TemporaryDrawer';
 import  FlashMessagesList  from './laout/FlashMessagesList';
 
 const theme = createMuiTheme({
+  
   palette: {
     primary: { main: '#143642' }, 
     secondary: { main: '#0F8B8D' }, 

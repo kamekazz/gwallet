@@ -16,6 +16,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+
 import GoogleAuth from './GoogleAuth';
 
 const drawerWidth = 200;
@@ -28,6 +29,7 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       width: drawerWidth,
       flexShrink: 0,
+      backgroundColor: 'white'
     },
   },
   appBar: {
@@ -52,6 +54,7 @@ const styles = theme => ({
   },
 });
 
+
 class ResponsiveDrawer extends React.Component {
   state = {
     mobileOpen: false,
@@ -66,18 +69,18 @@ class ResponsiveDrawer extends React.Component {
 
     const drawer = (
       <div>
-        <div className={classes.toolbar} />
+        <div className={classes.toolbar} style={{backgroundColor:'#143642'}}/>
         <Divider />
-        <List>
+        <List  style={{backgroundColor:'#143642'}}>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon color="secondary" /> : <MailIcon color="secondary" />}</ListItemIcon>
+              <ListItemText secondary primary={text} />
             </ListItem>
           ))}
         </List>
         <Divider />
-        <List>
+        <List style={{backgroundColor:'#143642'}}>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
@@ -126,7 +129,10 @@ class ResponsiveDrawer extends React.Component {
                 keepMounted: true, // Better open performance on mobile.
               }}
             >
-              {drawer}
+          
+             {drawer}
+          
+              
             </Drawer>
           </Hidden>
           <Hidden xsDown implementation="css">

@@ -33,6 +33,7 @@ class FlashMessagesList extends Component {
             vertical: 'top',
             horizontal: 'right',
           }}
+          
           open={checkMessages()}
           message={<span id={message.type ? 'message-id' : 'message-id-err'}>{message.text}</span>}
         />

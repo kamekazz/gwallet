@@ -14,7 +14,6 @@ export const signIn = (userId,pmUserInfo) => {
     userId: userId,
     userInfo: pmUserInfo
   }
-
     return {
       type:  SIGN_IN,
       payload: payload
@@ -36,7 +35,6 @@ export const newMassages = (text,type) => {
       type: FLASH_MESSAGES,
       payload: payload
     };
-    
 }
 
 
