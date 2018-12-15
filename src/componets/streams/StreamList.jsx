@@ -44,7 +44,9 @@ import { Link } from 'react-router-dom'
       <div className="item" key={stream.id}>
         <i className="large middle aligned icon camera"></i>
         <div className="content">
-          {stream.title}
+          <Link className="header" to={`/streams/${stream.id}`}>
+            {stream.title}
+          </Link>
           <div className="description">
             {stream.description}
           </div>

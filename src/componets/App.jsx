@@ -25,7 +25,7 @@ import history from '../history';
                 <Route path="/streams/new" exact  component={StreamCreate} />
                 <Route path="/streams/edit/:id" exact  component={StreamEdit} />
                 <Route path="/streams/delete/:id"   component={StreamDelete} />
-                <Route path="/streams/show"   component={StreamShow} />
+                <Route path="/streams/:id"   component={StreamShow} />
               </Switch>
           </div>
           </Router>
