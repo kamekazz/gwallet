@@ -1,24 +1,25 @@
 import React, { Component } from 'react'
 import { Router, Route,Switch} from 'react-router-dom'
 import StreamList from './streams/StreamList';
-import Header from './laout/Header';
+
 import history from '../history';
 
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { Foot } from './laout/Foot';
+import TemporaryDrawer from './laout/TemporaryDrawer';
+import  FlashMessagesList  from './laout/FlashMessagesList';
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: '#000000' }, 
-    secondary: { main: '#E54B4B' }, 
-    error: { main: '#ff0000' },
+    primary: { main: '#143642' }, 
+    secondary: { main: '#0F8B8D' }, 
+    error: { main: '#EC9A29' },
   },
   typography: {
     useNextVariants: true,
   }
 });
-
-
 
  class App extends Component {
 
@@ -29,10 +30,13 @@ const theme = createMuiTheme({
       <MuiThemeProvider theme={theme}>
           <Router history={history}>
           <div>
-            <Header />
+            <TemporaryDrawer>
+            <FlashMessagesList />
               <Switch >
                 <Route path="/" exact  component={StreamList} />
               </Switch>
+              <Foot />
+            </TemporaryDrawer>
           </div>
           </Router>
       </MuiThemeProvider>

@@ -1,5 +1,5 @@
 body{
-    /* background-color: #252525; */
+    background-color: rgb(255, 255, 255);
     padding: 0;
  
     
@@ -20,4 +20,12 @@ html, body {
     /* height: 100%; */
     /* box-sizing: border-box; */
     text-decoration: none;
+}
+
+#message-id{
+    color: #0F8B8D
+}
+
+#message-id-err{
+    color: #EC9A29
 }

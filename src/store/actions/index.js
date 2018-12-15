@@ -3,6 +3,7 @@
 import {
     SIGN_IN,
     SIGN_OUT,
+    FLASH_MESSAGES
 } from './types';
 
 
@@ -18,7 +19,7 @@ export const signIn = (userId,pmUserInfo) => {
       type:  SIGN_IN,
       payload: payload
     };
-  };
+};
 
   export const signOut = () => {
     return {
@@ -26,6 +27,16 @@ export const signIn = (userId,pmUserInfo) => {
     };
   }
 
-
+export const newMassages = (text,type) => {
+    let payload = {
+      text:text,
+      type:type,
+    }
+    return {
+      type: FLASH_MESSAGES,
+      payload: payload
+    };
+    
+}
 
 

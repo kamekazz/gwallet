@@ -4,12 +4,29 @@ import { connect } from 'react-redux'
 import  apiKiys  from '../../conf/confinkiys'
 
 import LockIcon from '@material-ui/icons/Lock';
-import LoopIcon from '@material-ui/icons/Loop';
 
 import Button from '@material-ui/core/Button';
 
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
+import Avatar from '@material-ui/core/Avatar';
+import Grid from '@material-ui/core/Grid';
+
 
  class GoogleAuth extends Component {
+
+  state = {
+    anchorEl: null,
+  }
+
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
 
     componentDidMount() {
         window.gapi.load('client:auth2', () => {
@@ -26,7 +43,7 @@ import Button from '@material-ui/core/Button';
               this.auth.isSignedIn.listen(this.onAuthChange)
             });
         });
-      }
+    }
     
       onAuthChange = isSignedIn => {
         if (isSignedIn) {
@@ -42,6 +59,36 @@ import Button from '@material-ui/core/Button';
     
       onSignOutClick = () => {
         this.auth.signOut()
+        this.handleClose()
+      }
+
+      rdUserInfo = ()=>{
+        const { anchorEl } = this.state;
+        const userInfo = this.props.userInfo 
+        return(
+          <div>
+          <Button variant="contained" color="secondary" 
+            aria-owns={anchorEl ? 'simple-menu' : undefined}
+            aria-haspopup="true"
+            onClick={this.handleClick}
+          >
+            <Grid container justify="center" alignItems="center">
+              <Avatar alt="Remy Sharp" srcSet={userInfo.Paa} style={{marginRight:'5px'}} />
+              {userInfo.ofa}
+            </Grid>
+          </Button>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={this.handleClose}
+          >
+            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+            <MenuItem onClick={this.handleClose}>My account</MenuItem>
+            <MenuItem onClick={this.onSignOutClick}>Logout</MenuItem>
+          </Menu>
+          </div>
+        )
       }
     
       renderAuthButton() {
@@ -49,10 +96,9 @@ import Button from '@material-ui/core/Button';
           return null;
         } else if (this.props.isSignedIn) {
           return (
-            <Button variant="contained" color="secondary" onClick={this.onSignOutClick} >
-              <LoopIcon />
-              Sign Out
-            </Button>
+            <div>
+              {this.rdUserInfo()}
+            </div>
           )
         } else {
           return (
