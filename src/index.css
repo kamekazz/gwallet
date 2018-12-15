@@ -32,3 +32,37 @@ html, body {
 
 /* A8201A */
 
+#Mian{
+    background-color: #0F8B8D;
+    height: 100vh;
+    animation-name: backdrop;
+    animation-duration: 10s;
+    animation-direction: normal; 
+}
+
+@keyframes backdrop{
+    0% {clip-path: circle(0% at 50% 0);}
+    65%  {clip-path: circle(61% at 50% 0);}
+    100%  {clip-path: circle(120% at 50% 0);}
+}
+
+@keyframes text-opacity{
+    0% {opacity: 0;}
+    65%  {opacity: 0.5;}
+    100%  {opacity: 1;}
+}
+
+.text-pere{
+    animation-name: text-opacity;
+    animation-duration: 10s;
+    animation-direction: normal; 
+}
+
+/* <div id="Mian" >
+<Typography style={{color:"white",textAlign:'center',marginTop:'25px'}} component="h2" variant="h3" gutterBottom>
+  Send and Receive  Cryptocurrency
+</Typography>
+<Typography style={{textAlign:'center',marginTop:'12px'}} color="primary" variant="h6" gutterBottom>
+   G-Wallet  is the easiest place to Send and Receive cryptocurrency the Safeway 100% garantie.
+</Typography>
+</div> */

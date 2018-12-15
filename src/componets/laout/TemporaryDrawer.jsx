@@ -13,6 +13,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
+
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
@@ -49,8 +51,8 @@ const styles = theme => ({
     width: drawerWidth,
   },
   content: {
-    flexGrow: 1,
-    padding: theme.spacing.unit * 1,
+    flexGrow: 1
+    // padding: theme.spacing.unit * 1,
   },
 });
 
@@ -71,16 +73,16 @@ class ResponsiveDrawer extends React.Component {
       <div>
         <div className={classes.toolbar} style={{backgroundColor:'#143642'}}/>
         <Divider />
-        <List  style={{backgroundColor:'#143642'}}>
+        <List  >
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon color="secondary" /> : <MailIcon color="secondary" />}</ListItemIcon>
-              <ListItemText secondary primary={text} />
+              <ListItemIcon>{index % 2 === 0 ? <HomeIcon /> : <HomeIcon />}</ListItemIcon>
+              <ListItemText  primary={text} />
             </ListItem>
           ))}
         </List>
         <Divider />
-        <List style={{backgroundColor:'#143642'}}>
+        <List >
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
@@ -105,7 +107,7 @@ class ResponsiveDrawer extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap style={{flexGrow:1}}>
-              Wallet
+             G-Wallet
             </Typography>
             <dir style={{margin:'3px'}}>
                 <GoogleAuth />

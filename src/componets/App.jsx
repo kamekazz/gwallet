@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Router, Route,Switch} from 'react-router-dom'
-import StreamList from './streams/StreamList';
+
 
 import history from '../history';
 
@@ -9,6 +9,8 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Foot } from './laout/Foot';
 import TemporaryDrawer from './laout/TemporaryDrawer';
 import  FlashMessagesList  from './laout/FlashMessagesList';
+
+import Mian from './welcome/Mian';
 
 const theme = createMuiTheme({
   
@@ -34,7 +36,7 @@ const theme = createMuiTheme({
             <TemporaryDrawer>
             <FlashMessagesList />
               <Switch >
-                <Route path="/" exact  component={StreamList} />
+                <Route path="/" exact  component={Mian} />
               </Switch>
               <Foot />
             </TemporaryDrawer>
