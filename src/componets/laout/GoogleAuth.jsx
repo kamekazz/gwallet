@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import  { signIn, signOut } from '../store/actions'
+import  { signIn, signOut } from '../../store/actions'
 import { connect } from 'react-redux'
-import  apiKiys  from '../conf/confinkiys'
+import  apiKiys  from '../../conf/confinkiys'
 
+import LockIcon from '@material-ui/icons/Lock';
+import LoopIcon from '@material-ui/icons/Loop';
 
+import Button from '@material-ui/core/Button';
 
 
  class GoogleAuth extends Component {
@@ -27,7 +30,7 @@ import  apiKiys  from '../conf/confinkiys'
     
       onAuthChange = isSignedIn => {
         if (isSignedIn) {
-          this.props.signIn(this.auth.currentUser.get().getId())
+          this.props.signIn(this.auth.currentUser.get().getId(),this.auth.currentUser.get().w3)
         } else {
           this.props.signOut()
         }
@@ -46,18 +49,18 @@ import  apiKiys  from '../conf/confinkiys'
           return null;
         } else if (this.props.isSignedIn) {
           return (
-            <button onClick={this.onSignOutClick} className="ui red google button">
-              <i className="google icon" />
+            <Button variant="contained" color="secondary" onClick={this.onSignOutClick} >
+              <LoopIcon />
               Sign Out
-            </button>
-          );
+            </Button>
+          )
         } else {
           return (
-            <button onClick={this.onSignInClick} className="ui red google button">
-              <i className="google icon" />
+            <Button variant="contained" color="secondary"  onClick={this.onSignInClick} >
+              <LockIcon />
               Sign In with Google
-            </button>
-          );
+            </Button>
+          )
         }
       }
     
@@ -67,7 +70,8 @@ import  apiKiys  from '../conf/confinkiys'
 }
     
 const mapStateToProps = (state) => ({
-    isSignedIn: state.auth.isSignedIn
+    isSignedIn: state.auth.isSignedIn,
+    userInfo: state.auth.userInfo
 })
 
 const mapDispatchToProps = {

@@ -5,14 +5,15 @@ import {
 
 const initialState = {
     isSignedIn:null,
-    userId:null
+    userId:null,
+    userInfo:null
 }
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
 
   case SIGN_IN:
-    return { ...state, isSignedIn: true, userId: payload }
+    return { ...state, isSignedIn: true, userId: payload.userId, userInfo: payload.userInfo   }
 
   case SIGN_OUT:
     return { ...state, isSignedIn: false, userId: null }

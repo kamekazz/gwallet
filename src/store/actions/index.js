@@ -8,10 +8,15 @@ import {
 
 
 
-export const signIn = userId => {
+export const signIn = (userId,pmUserInfo) => {
+  let payload = {
+    userId: userId,
+    userInfo: pmUserInfo
+  }
+
     return {
       type:  SIGN_IN,
-      payload: userId
+      payload: payload
     };
   };
 
